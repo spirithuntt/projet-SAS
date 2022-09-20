@@ -3,10 +3,18 @@
 #include <string.h>
 #include <time.h>
 ///*** DECLARATION DES VARIABLES ***
-typedef struct SProduit { char code_prdt[10]; char nom_prdt[50]; int quantity_prdt; float prix; } SProduit;
-static int i = 0;
-static int j = 3;// fin wassel index
-struct SProduit tab[100] = {
+typedef struct { char code_prdt[10]; char nom_prdt[50]; int quantity_prdt; float prix; } SProduit;// my normal struct
+typedef struct // struct for statistics
+{
+    char nom_produit[10];
+    float prixTTc;
+    char date[10];
+} Pproduit;
+Pproduit st[100];// tableau li and5l fih Pproduit
+int z;//size dyalou
+static int i = 0;//nomal index
+static int j = 3;// fin wassel index dyal tab dyali size dyalou
+SProduit tab[100] = {
     {"rbt32", "pharma", 23, 643},
     {"fsko", "fewk", 23, 643},
     {"vfx", "fke", 23, 643},
@@ -312,32 +320,39 @@ void Supprimer_un_produit(void)
                 }*/
 
 void Acheter_produit(void)// JOUTER UN NOUVEAU PRODUIT
-{   
-    /* for(i = 0 ;i < j ; i++)
-                {
-                   if (strcmp(tab[i].code_prdt, code_product) == 0)
-                    { 
-                        for (int k = 0; k < j; k++)
-                    {
-                        printf("%s\n",tab[k].nom_prdt);
-                    }
-                    
-                    }
-                }*/
-         printf("introduit le code produit\n");
+{
+        printf("introduit le code produit\n");
         scanf("%s", code_product);// le code produit
         printf(" la quantité à déduire\n");
         scanf("%d", &product_qnty); // quantite a ajouter au shop
-        for(i = 0 ;i <= j ; i++)
+        printf("\nla quantite avant est %d\n", tab[i].quantity_prdt);
+        for(i = 0 ;i < j ; i++)
                 {
-                    printf("la quantite avant est %d", tab[i].quantity_prdt);
+                    printf("%s", code_product);
                    if (strcmp(tab[i].code_prdt, code_product) == 0)
                    {
-                     tab[i].quantity_prdt = tab[i].quantity_prdt - product_qnty;
+                     tab[i].quantity_prdt -= product_qnty;
+                     break;
+                     // vente faite 
+                    time_t t;
+                    time(&t);
+                    strcpy(st[z].date, ctime(&t));
+                    strcpy(st[z].nom_produit, tab[i].nom_prdt);
+                  //  st[z].prixTTc =( tab[i].prix*1.15)*product_qnty;
+                    z++;
+                     
+                     
+                     
+                     
+                     
+                     /*time_t t;
+    time(&t);
+    printf("\n current time is : %s",ctime(&t));*/
+    
                    }
                 }
         printf("\n\n\t\t---------------VARIATION DU STOCK---------------\t\t\n\n\n");
-        printf("\nla quantite du produit mnt est %d \n",tab[i-1].quantity_prdt );
+        printf("\nla quantite du produit mnt est %d \n",tab[i].quantity_prdt );
 
 }
 
