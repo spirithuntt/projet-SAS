@@ -3,14 +3,13 @@
 #include <string.h>
 #include <time.h>
 ///*** DECLARATION DES VARIABLES ***
-typedef struct  //product stuct
+typedef struct
 {
   char code_prdt[10];
   char nom_prdt[50];
   int quantity_prdt;
   float prix;
-} SProduit;
-
+} SProduit;			// my normal struct
 typedef struct			// struct for statistics
 {
   
@@ -22,23 +21,24 @@ char date[10];
  
 } Pproduit;
 
+Pproduit st[100];		// tableau li and5l fih Pproduit
+int z;				//size dyalou
+float total;
+
+static int i = 0;		//nomal index
+static int j = 3;		// fin wassel index dyal tab dyali size dyalou
 SProduit tab[100] = { 
-	{"9898", "doliprane", 23, 635}, 
-  	{"gi813", "hypnotiques", 23, 63}, 
-	{"1234", "imodium", 23, 100}, 
+    {"9898", "doliprane", 23, 635}, 
+  {"gi813", "fewk", 23, 63}, 
+{"1200", "fke", 23, 100}, 
 };
 
-Pproduit st[100];		//staistics tab
-int z;				//his size
-float total;
-static int i;		//nomal index
-static int j = 3;		// fin wassel index dyal products tab dyali size dyalou t		//number of products that u want to enter for 2
+
+int Nmbr_Produit;		//number of products that u want to enter for 2
 int decision;			// list croissant ou decroissant les produit pour 3 et aussi chercher avec code ou bien quantity
 char code_product[10];
 
 int product_qnty;		// add or deduct quantity
-
-// list croissant ou decroissant les produit pour 3 et aussi chercher avec code ou bien quantity
 ///*** LES FONCTIONS ***
 void menu ();
 
@@ -51,7 +51,6 @@ void list_with_price ();
 
 void Acheter_produit (void);
 
-//void    deduct_products(int code_product [10], int numb_of_product);//permet de mettre C  jour la quantitC) aprC(s avoir introduit le code produit et la quantitC) C  dC)duire, minus in product
 void chercher (void);
 
 void Etat_du_stock (void);
@@ -110,29 +109,28 @@ switch (Choix)
 	{
 	
 case 1:
-	  Ajouter_Nv_Produit (1);
+	system("cls"); 
+	Ajouter_Nv_Produit (1);
 	  
 break;
 	
 case 2:
-	  
-printf
-	    ("\n Entrez le nombre de produits que vous voulez ajouter : ");
-	  int Nmbr_Produit;
-scanf ("%d", &Nmbr_Produit);
-	  
-Ajouter_Nv_Produit (Nmbr_Produit);
+
+printf("\n Entrez le nombre de produits que vous voulez ajouter : ");
+	  	system("cls"); 
+scanf("%d", &Nmbr_Produit);
+	Ajouter_Nv_Produit (Nmbr_Produit);
 	  
 break;
 	
 case 3:
-	  printf(" 1  : lister tous les produits selon lb ordre alphabC)tique croissant du nom. \n");
+printf(" 1  : lister tous les produits selon lb ordre alphabC)tique croissant du nom. \n");
 	  
-printf
-	    (" 2  : * lister tous les produits selon lb ordre C)croissant du prix. \n");
+printf(" 2  : * lister tous les produits selon lb ordre C)croissant du prix. \n");
 	  
 printf ("\nentrez votre choix : ");
-	  
+
+system("cls"); 
 scanf ("%d", &decision);
 	  
 if (decision == 1)
@@ -146,7 +144,7 @@ list_with_name ();
 	  else if (decision == 2)
 	    
 	    {
-	      
+	system("cls"); 
 list_with_price ();
 	    
 }
@@ -155,17 +153,20 @@ break;
 	
  
 case 4:
+		system("cls"); 
 	  Acheter_produit ();
 	  
 break;
 	
  
 case 5:
+		system("cls"); 
 	  chercher ();
 	  
 break;
 	  
 	case 6:
+		system("cls"); 
 	  Etat_du_stock ();
 	  
 break;
@@ -173,18 +174,21 @@ break;
  
  
 case 7:
+		system("cls"); 
 	  Alimenter_le_stock ();
 	  
 break;
 	
  
 case 8:
+			system("cls"); 
 	  Supprimer_un_produit ();
 	  
 break;
 	
  
 case 9:
+		system("cls"); 
 	  Statistique_de_vente ();
 	  
 break;
@@ -410,7 +414,7 @@ if (tab[i].quantity_prdt = product_qnty)
 	    
 	    {
 	      
-system ("clear");
+system ("clr");
 	      
 printf ("le nom du produit cherche) %s\n", tab[i].nom_prdt);
 	      
@@ -439,7 +443,7 @@ if (tab[i].quantity_prdt < 3)
 	
 	{
 	  
-system ("clear");
+system ("clr");
 	  
 printf ("le produit %s risque d'etre d epuise \n", tab[i].nom_prdt);
 	  
@@ -600,7 +604,7 @@ la_moyenne = total / z;
 float max, min;
   
 max = 0;
-min =st[i].prixTTc;
+min =0;
 
   
 printf ("le total est %f\n", total);
@@ -613,40 +617,23 @@ for (i = 0; i < z; i++)
       
 if (max < st[i].prixTTc)
 	
-max = st[i].prixTTc;
-      
-     else
-    i++;
+        max = st[i].prixTTc;
+if (min > st[i].prixTTc || min == 0)
+	
+        min = st[i].prixTTc;
+
     }
 printf ("max est %f\n", max);
-
-//min
-for (i = 0; i < z; i++)
-    
-    {
-        
-if (min > st[i + 1].prixTTc)
-	
-min = st[i+1].prixTTc;
-      
-     else
-    i++;
-    }
-  
 printf ("min %f\n", min);
  
 }
 
-
- 
- 
  
 int
 main () 
 {
   
 menu ();
-  
 return 0;
 
 }
